@@ -11,13 +11,13 @@ import java.util.Scanner;
     @description Vizibicikli kölcsönző
  */
 public class Main {
-    private static List<Kolcsonzes> kolcsonzesek;
+    public static List<Kolcsonzes> kolcsonzesek;
 
     private static void debugger () {
         int i = 0;
     }
 
-    private static String kiegeszites(int szam) {
+    public static String kiegeszites(int szam) {
 
         String eredmeny = "";
         if (szam < 10) {
@@ -47,21 +47,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.print("6. feladat: Kérek egy nevet: ");
         String nev = input.nextLine();
-
-        String idopont = "";
-        for (int i = 0; i < kolcsonzesek.size(); i++) {
-
-            if (kolcsonzesek.get(i).getNev().toLowerCase().equals(nev.toLowerCase())) {
-                idopont += "    " + kiegeszites(kolcsonzesek.get(i).getElvitelOra(i)) + ":" + kiegeszites(kolcsonzesek.get(i).getElvitelPerc(i)) + " - " + kiegeszites(kolcsonzesek.get(i).getVisszaOra(i)) + ":" + kiegeszites(kolcsonzesek.get(i).getVisszaPerc(i)) + "\n";
-            }
-        }
-
-        if (idopont.length() > 0) {
-            System.out.println("    Kata kölcsönzései: ");
-            System.out.println(idopont);
-        } else {
-            System.out.println("Nem volt ilyen nevű kölcsönző!");
-        }
+        System.out.println(Kolcsonzes.kolcsonzesLekerdezes(nev));
 
         debugger();
     }

@@ -24,7 +24,7 @@ public class Kolcsonzes {
         return jarmu;
     }
 
-    public int getElvitelOra(int i) {
+    public int getElvitelOra() {
         return elvitelOra;
     }
 
@@ -32,7 +32,7 @@ public class Kolcsonzes {
         this.elvitelOra = elvitelOra;
     }
 
-    public int getElvitelPerc(int i) {
+    public int getElvitelPerc() {
         return elvitelPerc;
     }
 
@@ -44,11 +44,11 @@ public class Kolcsonzes {
         VisszaOra = visszaOra;
     }
 
-    public int getVisszaOra(int i) {
+    public int getVisszaOra() {
         return VisszaOra;
     }
 
-    public int getVisszaPerc(int i) {
+    public int getVisszaPerc() {
         return visszaPerc;
     }
 
@@ -89,7 +89,21 @@ public class Kolcsonzes {
 
     public static String kolcsonzesLekerdezes(String nev) {
 
-        return null;
-    }
+        String kiiras = "    " + nev + " kölcsönzései:\n";
+        String eredmeny = "";
+        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
 
+            if (Main.kolcsonzesek.get(i).getNev().toLowerCase().equals(nev.toLowerCase())) {
+                eredmeny += "    " + Main.kiegeszites(Main.kolcsonzesek.get(i).getElvitelOra()) + ":" + Main.kiegeszites(Main.kolcsonzesek.get(i).getElvitelPerc()) + " - " + Main.kiegeszites(Main.kolcsonzesek.get(i).getVisszaOra()) + ":" + Main.kiegeszites(Main.kolcsonzesek.get(i).getVisszaPerc()) + "\n";
+            }
+        }
+
+        if (eredmeny.length() > 0) {
+            kiiras += eredmeny;
+            return kiiras;
+        } else {
+            kiiras = "Nem volt ilyen nevű kölcsönző!";
+            return kiiras;
+        }
+    }
 }
