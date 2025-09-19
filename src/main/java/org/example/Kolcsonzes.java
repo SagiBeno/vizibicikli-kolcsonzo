@@ -16,12 +16,12 @@ public class Kolcsonzes {
         this.nev = nev;
     }
 
-    public char getJarmu() {
-        return jarmu;
-    }
-
     public void setJarmu(char jarmu) {
         this.jarmu = jarmu;
+    }
+
+    public char getJarmu() {
+        return jarmu;
     }
 
     public int getElvitelOra() {
@@ -69,16 +69,22 @@ public class Kolcsonzes {
             int visszaPerc
     ) {
         setNev(nev);
-        setJarmu.(jarmu);
+        setJarmu(jarmu);
         setElvitelOra(elvitelOra);
         setElvitelPerc(elvitelPerc);
         setVisszaOra(visszaOra);
         setVisszaPerc(visszaPerc);
-
     }
 
     public Kolcsonzes(String fileLine) {
-
+        // parse read line
+        String[] split = fileLine.split(";");
+        setNev(split[0]);
+        setJarmu(split[1].charAt(0));
+        setElvitelOra(Integer.parseInt(split[2]));
+        setElvitelPerc(Integer.parseInt(split[3]));
+        setVisszaOra(Integer.parseInt(split[4]));
+        setVisszaPerc(Integer.parseInt(split[5]));
     }
 
 }
