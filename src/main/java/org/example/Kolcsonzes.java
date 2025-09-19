@@ -24,7 +24,7 @@ public class Kolcsonzes {
         return jarmu;
     }
 
-    public int getElvitelOra() {
+    public int getElvitelOra(int i) {
         return elvitelOra;
     }
 
@@ -32,7 +32,7 @@ public class Kolcsonzes {
         this.elvitelOra = elvitelOra;
     }
 
-    public int getElvitelPerc() {
+    public int getElvitelPerc(int i) {
         return elvitelPerc;
     }
 
@@ -44,11 +44,11 @@ public class Kolcsonzes {
         VisszaOra = visszaOra;
     }
 
-    public int getVisszaOra() {
+    public int getVisszaOra(int i) {
         return VisszaOra;
     }
 
-    public int getVisszaPer() {
+    public int getVisszaPerc(int i) {
         return visszaPerc;
     }
 
@@ -85,6 +85,11 @@ public class Kolcsonzes {
         setElvitelPerc(Integer.parseInt(split[3]));
         setVisszaOra(Integer.parseInt(split[4]));
         setVisszaPerc(Integer.parseInt(split[5]));
+    }
+
+    public static String kolcsonzesLekerdezes(String nev) {
+
+        return null;
     }
 
 }
