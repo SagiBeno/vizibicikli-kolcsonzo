@@ -28,6 +28,8 @@ public class Main {
             kolcsonzesek.add(new Kolcsonzes(fileLine));
         }
 
+        System.out.println("5. feladat: Napi kölcsönzések száma: " + kolcsonzesek.size());
+
         debugger();
     }
 }
