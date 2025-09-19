@@ -6,7 +6,7 @@ public class Kolcsonzes {
     private int elvitelOra;
     private int elvitelPerc;
     private int VisszaOra;
-    private int visszaPer;
+    private int visszaPerc;
 
     public String getNev() {
         return nev;
@@ -49,10 +49,36 @@ public class Kolcsonzes {
     }
 
     public int getVisszaPer() {
-        return visszaPer;
+        return visszaPerc;
     }
 
-    public void setVisszaPer(int visszaPer) {
-        this.visszaPer = visszaPer;
+    public void setVisszaPerc(int visszaPer) {
+        this.visszaPerc = visszaPer;
     }
+
+    public Kolcsonzes() {
+        // TODO - test field value
+    }
+
+    public Kolcsonzes(
+            String nev,
+            char jarmu,
+            int elvitelOra,
+            int elvitelPerc,
+            int visszaOra,
+            int visszaPerc
+    ) {
+        setNev(nev);
+        setJarmu.(jarmu);
+        setElvitelOra(elvitelOra);
+        setElvitelPerc(elvitelPerc);
+        setVisszaOra(visszaOra);
+        setVisszaPerc(visszaPerc);
+
+    }
+
+    public Kolcsonzes(String fileLine) {
+
+    }
+
 }
