@@ -13,6 +13,10 @@ import java.util.Scanner;
     @description Vizibicikli kölcsönző
  */
 public class Main {
+    public static boolean isRunningTest = false;
+    private static final String testNev = "Kata";
+    private static final String testIdopont = "10:9";
+
     public static List<Kolcsonzes> kolcsonzesek;
 
     private static void debugger () {
@@ -27,11 +31,11 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         System.out.print("6. feladat: Kérek egy nevet: ");
-        String nev = input.nextLine();
+        String nev = isRunningTest ? testNev : input.nextLine();
         System.out.println(handler.kolcsonzesLekerdezes(nev));
 
         System.out.print("7. Feladat: Adjon meg egy időpontot óra:perc alakban: ");
-        String idopont = input.nextLine();
+        String idopont = isRunningTest ? testIdopont : input.nextLine();
         //handler.vizenlevoJarmuvek(idopont);
 
         handler.FJarmu("sourceFiles/F.txt");
