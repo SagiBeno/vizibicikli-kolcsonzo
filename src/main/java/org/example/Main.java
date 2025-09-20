@@ -1,10 +1,6 @@
 package org.example;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,7 +32,7 @@ public class Main {
 
         System.out.print("7. Feladat: Adjon meg egy időpontot óra:perc alakban: ");
         String idopont = isRunningTest ? testIdopont : input.nextLine();
-        //handler.vizenlevoJarmuvek(idopont);
+        System.out.println("    A vízen lévő járművek:\n" + handler.vizenlevoJarmuvek(idopont));
 
         handler.FJarmu("sourceFiles/F.txt");
 

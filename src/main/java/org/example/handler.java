@@ -38,14 +38,14 @@ public class handler {
 
         String kiiras = "    " + nev + " kölcsönzései:\n";
         String eredmeny = "";
-        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
+        for (Kolcsonzes k : Main.kolcsonzesek) {
 
-            if (Main.kolcsonzesek.get(i).getNev().toLowerCase().equals(nev.toLowerCase())) {
-                eredmeny += "    " + kiegeszites(Main.kolcsonzesek.get(i).getElvitelOra()) + ":" + kiegeszites(Main.kolcsonzesek.get(i).getElvitelPerc()) + " - " + kiegeszites(Main.kolcsonzesek.get(i).getVisszaOra()) + ":" + kiegeszites(Main.kolcsonzesek.get(i).getVisszaPerc()) + "\n";
+            if (k.getNev().equalsIgnoreCase(nev)) {
+                eredmeny += "    " + kiegeszites(k.getElvitelOra()) + ":" + kiegeszites(k.getElvitelPerc()) + " - " + kiegeszites(k.getVisszaOra()) + ":" + kiegeszites(k.getVisszaPerc()) + "\n";
             }
         }
 
-        if (eredmeny.length() > 0) {
+        if (!eredmeny.isEmpty()) {
             kiiras += eredmeny;
             return kiiras;
         } else {
@@ -59,11 +59,18 @@ public class handler {
         String[] idopontTomb = idopont.split(":");
         int ora = Integer.parseInt(idopontTomb[0]);
         int perc = Integer.parseInt(idopontTomb[1]);
+        int idoPerben = ora * 60 + perc;
+        String eredmeny = "";
 
-        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
+        for (Kolcsonzes k : Main.kolcsonzesek) {
+            int kezdet = k.getElvitelOra() * 60 + k.getElvitelPerc();
+            int veg   = k.getVisszaOra()  * 60 + k.getVisszaPerc();
 
+            if (kezdet <= idoPerben && idoPerben < veg) {
+                eredmeny += "    " + kiegeszites(k.getElvitelOra()) + ":" + kiegeszites(k.getElvitelPerc()) + " - " + kiegeszites(k.getVisszaOra()) + ":" + kiegeszites(k.getVisszaPerc()) + " : " + k.getNev() + "\n";
+            }
         }
-        return null;
+        return eredmeny;
     }
 
     public static int bevetel() {
@@ -74,10 +81,10 @@ public class handler {
     public static void FJarmu(String filename) throws IOException {
         File fki = new File(filename);
         FileWriter fwki = new FileWriter(fki);
-        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
+        for (Kolcsonzes k : Main.kolcsonzesek) {
 
-            if (Main.kolcsonzesek.get(i).getJarmu() == 'F') {
-                fwki.write(kiegeszites(Main.kolcsonzesek.get(i).getElvitelOra()) + ":" + kiegeszites(Main.kolcsonzesek.get(i).getElvitelPerc()) + " - " + kiegeszites(Main.kolcsonzesek.get(i).getVisszaOra()) + ":" + kiegeszites(Main.kolcsonzesek.get(i).getVisszaPerc()) + " : " + Main.kolcsonzesek.get(i).getNev() + "\n");
+            if (k.getJarmu() == 'F') {
+                fwki.write(kiegeszites(k.getElvitelOra()) + ":" + kiegeszites(k.getElvitelPerc()) + " - " + kiegeszites(k.getVisszaOra()) + ":" + kiegeszites(k.getVisszaPerc()) + " - " + k.getNev() + "\n");
             }
         }
         fwki.close();
@@ -85,10 +92,10 @@ public class handler {
 
     public static List<Character> jarmuTipusok() {
         List<Character> jarmuTipusok = new ArrayList<>();
-        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
+        for (Kolcsonzes k : Main.kolcsonzesek) {
 
-            if (!jarmuTipusok.contains(Main.kolcsonzesek.get(i).getJarmu())) {
-                jarmuTipusok.add(Main.kolcsonzesek.get(i).getJarmu());
+            if (!jarmuTipusok.contains(k.getJarmu())) {
+                jarmuTipusok.add(k.getJarmu());
             }
         }
         Collections.sort(jarmuTipusok);
@@ -98,13 +105,11 @@ public class handler {
     public static int statisztika(Character jarmuTipus) {
 
         int szamlalo = 0;
-        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
-
-            if (Main.kolcsonzesek.get(i).getJarmu() == jarmuTipus) {
+        for (Kolcsonzes k : Main.kolcsonzesek) {
+            if (k.getJarmu() == jarmuTipus) {
                 szamlalo++;
             }
         }
-
         return szamlalo;
     }
 }
