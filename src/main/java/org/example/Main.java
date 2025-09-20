@@ -23,7 +23,7 @@ public class Main {
         // 4. feladat:
         handler.fileBeolvasas("sourceFiles/kolcsonzesek.txt");
 
-        System.out.println("5. feladat: Napi kölcsönzések száma: " + kolcsonzesek.size());
+        System.out.println("5. feladat: Napi kölcsönzések száma: " + kolcsonzesek.size() + "\n");
 
         Scanner input = new Scanner(System.in);
         System.out.print("6. feladat: Kérek egy nevet: ");
@@ -34,7 +34,7 @@ public class Main {
         String idopont = isRunningTest ? testIdopont : input.nextLine();
         System.out.println("    A vízen lévő járművek:\n" +  handler.vizenlevoJarmuvek(idopont));
 
-        System.out.println("8. feladat: A napi bevétel ára: " + handler.bevetel() + " Ft");
+        System.out.println("8. feladat: A napi bevétel ára: " + handler.bevetel() + " Ft\n");
 
         handler.FJarmu("sourceFiles/F.txt");
 
