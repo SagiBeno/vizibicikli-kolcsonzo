@@ -11,7 +11,7 @@ public class handler {
     public static void fileBeolvasas(String fileName) throws FileNotFoundException {
         Main.kolcsonzesek = new ArrayList<>();
 
-        File fbe = new File("sourceFiles/kolcsonzesek.txt");
+        File fbe = new File(fileName);
         Scanner sbe = new Scanner(fbe);
         sbe.nextLine(); // fejléc kihagyása
         while (sbe.hasNextLine()) {
@@ -24,28 +24,27 @@ public class handler {
 
         String eredmeny = "";
         if (szam < 10) {
-            eredmeny = "0" + String.valueOf(szam);
-            return eredmeny;
+            eredmeny = "0" + szam;
         }
 
         else {
             eredmeny = String.valueOf(szam);
-            return eredmeny;
         }
+        return eredmeny;
     }
 
     public static String kolcsonzesLekerdezes(String nev) {
 
         String kiiras = "    " + nev + " kölcsönzései:\n";
-        String eredmeny = "";
+        StringBuilder eredmeny = new StringBuilder();
         for (Kolcsonzes k : Main.kolcsonzesek) {
 
             if (k.getNev().equalsIgnoreCase(nev)) {
-                eredmeny += "    " + kiegeszites(k.getElvitelOra()) + ":" + kiegeszites(k.getElvitelPerc()) + " - " + kiegeszites(k.getVisszaOra()) + ":" + kiegeszites(k.getVisszaPerc()) + "\n";
+                eredmeny.append("    ").append(kiegeszites(k.getElvitelOra())).append(":").append(kiegeszites(k.getElvitelPerc())).append(" - ").append(kiegeszites(k.getVisszaOra())).append(":").append(kiegeszites(k.getVisszaPerc())).append("\n");
             }
         }
 
-        if (!eredmeny.isEmpty()) {
+        if (eredmeny.length() > 0) {
             kiiras += eredmeny;
             return kiiras;
         } else {
@@ -60,21 +59,21 @@ public class handler {
         int ora = Integer.parseInt(idopontTomb[0]);
         int perc = Integer.parseInt(idopontTomb[1]);
         int idoPerben = ora * 60 + perc;
-        String eredmeny = "";
+        StringBuilder eredmeny = new StringBuilder();
 
         for (Kolcsonzes k : Main.kolcsonzesek) {
             int kezdet = k.getElvitelOra() * 60 + k.getElvitelPerc();
             int veg   = k.getVisszaOra()  * 60 + k.getVisszaPerc();
 
             if (kezdet <= idoPerben && idoPerben < veg) {
-                eredmeny += "    " + kiegeszites(k.getElvitelOra()) + ":" + kiegeszites(k.getElvitelPerc()) + " - " + kiegeszites(k.getVisszaOra()) + ":" + kiegeszites(k.getVisszaPerc()) + " : " + k.getNev() + "\n";
+                eredmeny.append("    ").append(kiegeszites(k.getElvitelOra())).append(":").append(kiegeszites(k.getElvitelPerc())).append(" - ").append(kiegeszites(k.getVisszaOra())).append(":").append(kiegeszites(k.getVisszaPerc())).append(" : ").append(k.getNev()).append("\n");
             }
         }
 
-        if (eredmeny.isEmpty()) {
-            eredmeny = "    Nincs jármű a megadott időpontban!";
+        if (eredmeny.length() == 0) {
+            eredmeny = new StringBuilder("    Nincs jármű a megadott időpontban!");
         }
-        return eredmeny;
+        return eredmeny.toString();
     }
 
     public static int bevetel() {

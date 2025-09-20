@@ -42,8 +42,8 @@ public class Main {
 
         System.out.println("10. feladat: Statisztika");
         List<Character> jarmuTipusok = handler.jarmuTipusok();
-        for (int i = 0; i < jarmuTipusok.size(); i++) {
-            System.out.println("    " + jarmuTipusok.get(i) + " - " + handler.statisztika(jarmuTipusok.get(i)));
+        for (Character character : jarmuTipusok) {
+            System.out.println("    " + character + " - " + handler.statisztika(character));
         }
         //debugger();
     }
