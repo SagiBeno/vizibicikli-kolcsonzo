@@ -32,7 +32,9 @@ public class Main {
 
         System.out.print("7. Feladat: Adjon meg egy időpontot óra:perc alakban: ");
         String idopont = isRunningTest ? testIdopont : input.nextLine();
-        System.out.println("    A vízen lévő járművek:\n" + handler.vizenlevoJarmuvek(idopont));
+        System.out.println("    A vízen lévő járművek:\n" +  handler.vizenlevoJarmuvek(idopont));
+
+        System.out.println("8. feladat: A napi bevétel ára: " + handler.bevetel() + " Ft");
 
         handler.FJarmu("sourceFiles/F.txt");
 

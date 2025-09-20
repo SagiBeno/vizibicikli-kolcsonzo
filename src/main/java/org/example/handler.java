@@ -49,7 +49,7 @@ public class handler {
             kiiras += eredmeny;
             return kiiras;
         } else {
-            kiiras = "Nem volt ilyen nevű kölcsönző!";
+            kiiras = "    Nem volt ilyen nevű kölcsönző!";
             return kiiras;
         }
     }
@@ -70,12 +70,22 @@ public class handler {
                 eredmeny += "    " + kiegeszites(k.getElvitelOra()) + ":" + kiegeszites(k.getElvitelPerc()) + " - " + kiegeszites(k.getVisszaOra()) + ":" + kiegeszites(k.getVisszaPerc()) + " : " + k.getNev() + "\n";
             }
         }
-        return eredmeny;
+
+        if (!eredmeny.isEmpty()) {
+            return eredmeny;
+        } else {
+            eredmeny = "    Nincs jármű a megadott időpontban!";
+            return eredmeny;
+        }
     }
 
     public static int bevetel() {
         int bevetel = 0;
-        return 1;
+        for (Kolcsonzes k : Main.kolcsonzesek) {
+            int perc = Math.abs((k.getVisszaOra() * 60 + k.getVisszaPerc()) - (k.getElvitelOra() * 60 + k.getElvitelPerc()));
+            bevetel += ((perc + 29) / 30 * 2400); // +29 -> félórák felfele kerekítése (1 + 29) / 30 = 1 --> 2400 Ft
+        }
+        return bevetel;
     }
 
     public static void FJarmu(String filename) throws IOException {
