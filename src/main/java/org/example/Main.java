@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,6 +35,12 @@ public class Main {
         //handler.vizenlevoJarmuvek(idopont);
 
         handler.FJarmu("sourceFiles/F.txt");
+
+        System.out.println("10. feladat: Statisztika");
+        List<Character> jarmuTipusok = handler.jarmuTipusok();
+        for (int i = 0; i < jarmuTipusok.size(); i++) {
+            System.out.println("    " + jarmuTipusok.get(i) + " - " + handler.statisztika(jarmuTipusok.get(i)));
+        }
         debugger();
     }
 }

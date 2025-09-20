@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class handler {
 
@@ -73,7 +71,7 @@ public class handler {
         return 1;
     }
 
-    public static void FJarmu (String filename) throws IOException {
+    public static void FJarmu(String filename) throws IOException {
         File fki = new File(filename);
         FileWriter fwki = new FileWriter(fki);
         for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
@@ -83,5 +81,30 @@ public class handler {
             }
         }
         fwki.close();
+    }
+
+    public static List<Character> jarmuTipusok() {
+        List<Character> jarmuTipusok = new ArrayList<>();
+        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
+
+            if (!jarmuTipusok.contains(Main.kolcsonzesek.get(i).getJarmu())) {
+                jarmuTipusok.add(Main.kolcsonzesek.get(i).getJarmu());
+            }
+        }
+        Collections.sort(jarmuTipusok);
+        return jarmuTipusok;
+    }
+
+    public static int statisztika(Character jarmuTipus) {
+
+        int szamlalo = 0;
+        for (int i = 0; i < Main.kolcsonzesek.size(); i++) {
+
+            if (Main.kolcsonzesek.get(i).getJarmu() == jarmuTipus) {
+                szamlalo++;
+            }
+        }
+
+        return szamlalo;
     }
 }
