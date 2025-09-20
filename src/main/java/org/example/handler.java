@@ -71,12 +71,10 @@ public class handler {
             }
         }
 
-        if (!eredmeny.isEmpty()) {
-            return eredmeny;
-        } else {
+        if (eredmeny.isEmpty()) {
             eredmeny = "    Nincs jármű a megadott időpontban!";
-            return eredmeny;
         }
+        return eredmeny;
     }
 
     public static int bevetel() {

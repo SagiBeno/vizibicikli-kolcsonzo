@@ -10,14 +10,16 @@ import java.util.Scanner;
  */
 public class Main {
     public static boolean isRunningTest = false;
-    private static final String testNev = "Kata";
-    private static final String testIdopont = "10:9";
+    public static String testNev;
+    public static String testIdopont;
 
     public static List<Kolcsonzes> kolcsonzesek;
 
+    /*
     private static void debugger () {
         int i = 0;
     }
+     */
 
     public static void main(String[] args) throws IOException {
         // 4. feladat:
@@ -43,6 +45,6 @@ public class Main {
         for (int i = 0; i < jarmuTipusok.size(); i++) {
             System.out.println("    " + jarmuTipusok.get(i) + " - " + handler.statisztika(jarmuTipusok.get(i)));
         }
-        debugger();
+        //debugger();
     }
 }

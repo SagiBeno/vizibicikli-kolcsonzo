@@ -56,10 +56,7 @@ public class Kolcsonzes {
         this.visszaPerc = visszaPerc;
     }
 
-    public Kolcsonzes() {
-        // TODO - test field value
-    }
-
+    /*
     public Kolcsonzes(
             String nev,
             char jarmu,
@@ -75,6 +72,7 @@ public class Kolcsonzes {
         setVisszaOra(visszaOra);
         setVisszaPerc(visszaPerc);
     }
+     */
 
     public Kolcsonzes(String fileLine) {
         // parse read line
