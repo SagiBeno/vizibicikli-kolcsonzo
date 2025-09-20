@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-public class Tests {
+public class TestClass {
     @Before
     public void before() {
         Main.isRunningTest = true;
