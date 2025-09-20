@@ -22,7 +22,7 @@ public class handler {
 
     public static String kiegeszites(int szam) {
 
-        String eredmeny = "";
+        String eredmeny;
         if (szam < 10) {
             eredmeny = "0" + szam;
         }
@@ -44,13 +44,12 @@ public class handler {
             }
         }
 
-        if (eredmeny.length() > 0) {
+        if (!eredmeny.isEmpty()) {
             kiiras += eredmeny;
-            return kiiras;
         } else {
             kiiras = "    Nem volt ilyen nevű kölcsönző!";
-            return kiiras;
         }
+        return kiiras;
     }
 
     public static String vizenlevoJarmuvek(String idopont) {
@@ -70,7 +69,7 @@ public class handler {
             }
         }
 
-        if (eredmeny.length() == 0) {
+        if (eredmeny.isEmpty()) {
             eredmeny = new StringBuilder("    Nincs jármű a megadott időpontban!");
         }
         return eredmeny.toString();
